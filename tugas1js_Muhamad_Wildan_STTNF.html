@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tugas 1 - JavaScript: Menghitung Luas</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 600px; margin: 40px auto; padding: 0 16px; }
+    li { margin-bottom: 8px; }
+  </style>
+</head>
+<body>
+  <h1>Menghitung Luas Bangun Datar</h1>
+  <ul id="hasil"></ul>
+
+  <script>
+    // Fungsi menghitung luas persegi panjang: panjang * lebar
+    function luasPersegiPanjang(panjang, lebar) {
+      return panjang * lebar;
+    }
+
+    // Fungsi menghitung luas bujur sangkar: sisi * sisi
+    function luasBujurSangkar(sisi) {
+      return sisi * sisi;
+    }
+
+    // Fungsi menghitung luas segitiga: 1/2 * alas * tinggi
+    function luasSegitiga(alas, tinggi) {
+      return 0.5 * alas * tinggi;
+    }
+
+    // Fungsi menampilkan hasil perhitungan ke halaman dan console
+    function tampilkan(teks) {
+      const item = document.createElement("li");
+      item.textContent = teks;
+      document.getElementById("hasil").appendChild(item);
+      console.log(teks);
+    }
+
+    // Nilai variabel bebas
+    let panjang = 12;
+    let lebar = 8;
+    let sisi = 7;
+    let alas = 10;
+    let tinggi = 6;
+
+    // Memanggil fungsi dan menyimpan hasil ke variabel
+    let hasilPersegiPanjang = luasPersegiPanjang(panjang, lebar);
+    let hasilBujurSangkar = luasBujurSangkar(sisi);
+    let hasilSegitiga = luasSegitiga(alas, tinggi);
+
+    // Menampilkan hasil
+    tampilkan("Luas persegi panjang (p=" + panjang + ", l=" + lebar + ") = " + hasilPersegiPanjang);
+    tampilkan("Luas bujur sangkar (s=" + sisi + ") = " + hasilBujurSangkar);
+    tampilkan("Luas segitiga (a=" + alas + ", t=" + tinggi + ") = " + hasilSegitiga);
+  </script>
+</body>
+</html>
