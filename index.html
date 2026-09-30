@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas 2 - Javascript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 24px
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%
+        }
+
+        th,
+        td {
+            border: 1px solid #333;
+            padding: 8px 12px;
+            text-align: left
+        }
+
+        thead {
+            background: #007ACC;
+            color: #fff
+        }
+
+        tfoot {
+            font-weight: bold;
+            background: #eee
+        }
+
+        td.num,
+        th.num {
+            text-align: right
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Data Pegawai</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nama Pegawai</th>
+                <th>Umur</th>
+                <th>Jabatan</th>
+                <th>Status</th>
+                <th class="num">Gaji Pokok</th>
+                <th class="num">Tunjangan Jabatan</th>
+                <th class="num">BPJS</th>
+                <th class="num">Tunjangan Keluarga</th>
+                <th class="num">Total Gaji</th>
+            </tr>
+        </thead>
+        <tbody id="data"></tbody>
+        <tfoot id="foot"></tfoot>
+    </table>
+    <script>
+        const pegawai = { nama: "Dodi Prayodi", umur: 25, jabatan: "Manajer", status: "Menikah" };
+
+        const gajiJabatan = { "Manajer": 15000000, "Asisten Manajer": 10000000, "Staff": 5000000 };
+
+        const rp = n => "Rp " + n.toLocaleString("id-ID");
+
+        const gapok = gajiJabatan[pegawai.jabatan];
+        const tunjJabatan = 0.15 * gapok;
+        const bpjs = 0.10 * gapok;
+        const tunjKeluarga = pegawai.status === "Menikah" ? 0.20 * gapok : 0;
+        const total = gapok + tunjJabatan + bpjs + tunjKeluarga;
+
+        document.getElementById("data").innerHTML = `
+<tr>
+<td>${pegawai.nama}</td>
+<td>${pegawai.umur}</td>
+<td>${pegawai.jabatan}</td>
+<td>${pegawai.status}</td>
+<td class="num">${rp(gapok)}</td>
+<td class="num">${rp(tunjJabatan)}</td>
+<td class="num">${rp(bpjs)}</td>
+<td class="num">${rp(tunjKeluarga)}</td>
+<td class="num">${rp(total)}</td>
+</tr>`;
+
+        document.getElementById("foot").innerHTML = `
+<tr>
+<td colspan="8">Total Gaji</td>
+<td class="num">${rp(total)}</td>
+</tr>`;
+    </script>
+</body>
+
+</html>
