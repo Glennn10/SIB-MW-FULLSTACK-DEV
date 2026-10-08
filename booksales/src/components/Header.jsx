@@ -1,8 +1,10 @@
+import { Link, NavLink } from "react-router";
+
 const links = [
-  { href: "#home", label: "Home" },
-  { href: "#book", label: "Book" },
-  { href: "#team", label: "Team" },
-  { href: "#contact", label: "Contact" },
+  { to: "/", label: "Home" },
+  { to: "/book", label: "Book" },
+  { to: "/team", label: "Team" },
+  { to: "/contact", label: "Contact" },
 ];
 
 function Header() {
@@ -10,17 +12,17 @@ function Header() {
     <header className="site-header">
       <div className="container d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3">
         <div className="col-md-3 mb-2 mb-md-0">
-          <a href="#home" className="brand d-inline-flex align-items-center text-decoration-none">
+          <Link to="/" className="brand d-inline-flex align-items-center text-decoration-none">
             <i className="fa-solid fa-book fa-xl"></i>
-            <span className="ms-2 fs-4">BookStore</span>
-          </a>
+            <span className="ms-2 fs-4">BookSales</span>
+          </Link>
         </div>
         <ul className="nav col-12 col-md-auto mb-2 mb-md-0 justify-content-center">
           {links.map((link) => (
-            <li key={link.href}>
-              <a href={link.href} className="nav-link px-3">
+            <li key={link.to}>
+              <NavLink to={link.to} end={link.to === "/"} className="nav-link px-3">
                 {link.label}
-              </a>
+              </NavLink>
             </li>
           ))}
         </ul>
