@@ -1,34 +1,30 @@
+import { NavLink } from "react-router";
+
+const links = [
+  { to: "/", label: "Home" },
+  { to: "/book", label: "Book" },
+  { to: "/team", label: "Team" },
+  { to: "/contact", label: "Contact" },
+];
+
 function Footer() {
   return (
-    <div className="container">
-      <footer className="py-2 my-2">
-        <ul className="nav justify-content-center border-bottom pb-3 mb-3">
-          <li className="nav-item">
-            <a href="#home" className="nav-link px-2 text-body-secondary">
-              Home
-            </a>
-          </li>
-          <li className="nav-item">
-            <a href="#book" className="nav-link px-2 text-body-secondary">
-              Book
-            </a>
-          </li>
-          <li className="nav-item">
-            <a href="#team" className="nav-link px-2 text-body-secondary">
-              Team
-            </a>
-          </li>
-          <li className="nav-item">
-            <a href="#contact" className="nav-link px-2 text-body-secondary">
-              Contact
-            </a>
-          </li>
+    <footer className="site-footer">
+      <div className="container">
+        <ul className="nav justify-content-center footer-divider pb-3 mb-3">
+          {links.map((link) => (
+            <li className="nav-item" key={link.to}>
+              <NavLink to={link.to} end={link.to === "/"} className="nav-link px-3">
+                {link.label}
+              </NavLink>
+            </li>
+          ))}
         </ul>
-        <p className="text-center text-body-secondary">
-          &copy; 2026 BookSales. Created by Revani - STT Terpadu Nurul Fikri.
+        <p className="text-center mb-0">
+          &copy; 2026 BookSales. Created by Muhamad Wildan - STT Terpadu Nurul Fikri.
         </p>
-      </footer>
-    </div>
+      </div>
+    </footer>
   );
 }
 
