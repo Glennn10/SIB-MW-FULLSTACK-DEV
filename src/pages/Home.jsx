@@ -1,4 +1,6 @@
 import { Link } from "react-router";
+import BookCover from "../components/BookCover";
+import books from "../utils/books";
 
 const categories = [
   { icon: "fa-feather-pointed", name: "Fiksi & Sastra", count: "Cerita yang tinggal lama" },
@@ -6,6 +8,8 @@ const categories = [
   { icon: "fa-compass", name: "Sejarah & Sains", count: "Dunia dari sudut baru" },
   { icon: "fa-wand-magic-sparkles", name: "Fantasi", count: "Petualangan tanpa batas" },
 ];
+
+const featuredBooks = books.slice(0, 4);
 
 function Home() {
   return (
@@ -72,6 +76,45 @@ function Home() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="home-featured">
+        <div className="container">
+          <div className="home-section-heading">
+            <div>
+              <span className="home-kicker">Pilihan paling diminati</span>
+              <h2>Rekomendasi buku hari ini</h2>
+            </div>
+            <Link to="/book" className="home-text-link">
+              Lihat semua buku
+              <i className="fa-solid fa-arrow-right ms-2" aria-hidden="true"></i>
+            </Link>
+          </div>
+          <div className="row g-4">
+            {featuredBooks.map((book) => (
+              <div className="col-md-6 col-xl-3" key={book.id}>
+                <div className="card h-100 shadow-sm border-0">
+                  <BookCover
+                    title={book.title}
+                    author={book.author}
+                    coverUrl={book.coverUrl}
+                    coverId={book.coverId}
+                    from={book.from}
+                    to={book.to}
+                  />
+                  <div className="card-body d-flex flex-column">
+                    <h3 className="book-title card-title">{book.title}</h3>
+                    <small className="book-author">{book.author}</small>
+                    <p className="card-text text-body-secondary mt-2">
+                      {book.description}
+                    </p>
+                    <strong className="mt-auto pt-2 book-price">{book.price}</strong>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
